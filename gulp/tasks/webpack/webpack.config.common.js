@@ -1,7 +1,5 @@
 import webpack from 'webpack';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import HtmlWebpackIncludeAssetsPlugin from 'html-webpack-include-assets-plugin';
 import paths from '../../utils/paths';
 
 export const exposeLoadersConfig = [
@@ -54,18 +52,10 @@ export const rulesConfig = [
 ];
 
 export const pluginsConfig = [
-    new CopyWebpackPlugin([{
-        from: 'node_modules/bootstrap/dist/css',
-        to: 'css'
-    }]),
     new HtmlWebpackPlugin({
         filename: 'index.html',
         hash: true,
         template: `./${paths.webDir}/templates/index.html`
-    }),
-    new HtmlWebpackIncludeAssetsPlugin({
-        append: false,
-        assets: ['css/bootstrap.css']
     }),
     new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/)
 ];
