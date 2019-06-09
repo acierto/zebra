@@ -7,6 +7,6 @@ const serverDir = `${projectDir}/server`;
 export default {
     clientDir,
     serverDir,
-    distDir: 'src/client/src/public',
+    distDir: 'src/public',
     webDir: 'src/client/src'
 };

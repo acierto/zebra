@@ -59,7 +59,7 @@ export const pluginsConfig = [
         to: 'css'
     }]),
     new HtmlWebpackPlugin({
-        filename: 'index.ejs',
+        filename: 'index.html',
         hash: true,
         template: `./${paths.webDir}/templates/index.html`
     }),
@@ -84,10 +84,11 @@ export const optimizationConfig = {
 };
 
 export const entryConfig = {
-    main: [`./${paths.webDir}/public/index.tsx`]
+    main: [`./${paths.webDir}/index.tsx`]
 };
 
 export const outputConfig = {
     filename: '[name]-[hash].js',
+    path: '/',
     publicPath: ''
 };

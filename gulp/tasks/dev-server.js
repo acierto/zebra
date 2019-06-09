@@ -5,25 +5,18 @@ import Q from 'q';
 import R from 'ramda';
 import getLogger from 'loglevel-colored-level-prefix';
 import bodyParser from 'body-parser';
-import axios from 'axios';
-import {proxyPort, itestPort} from '../utils/connection';
+import {proxyPort, serverPort} from '../utils/connection';
 import hostname from '../utils/hostname';
 import webpackDevConfig from './webpack/webpack.config.dev';
 
 const log = getLogger({level: 'trace', prefix: 'Browser Log'});
 
-const target = `http://${hostname}:${itestPort}`;
+const target = `http://${hostname}:${serverPort}`;
 
 const proxy = [{
     changeOrigin: true,
     context: [
-        '/deployit',
-        '/api',
-        '/icons',
-        '/login',
-        '/logout',
-        '/compare-plugin',
-        '/productregistration'
+        '/api'
     ],
     target
 }];

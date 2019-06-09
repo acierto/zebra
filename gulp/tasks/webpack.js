@@ -12,7 +12,7 @@ const createDist = ({config, plumb = false}) => gulp
     .src(`${paths.webDir}/**/*.js`)
     .pipe(plumb ? plumber() : identity())
     .pipe(webpackStream(config, webpack))
-    .pipe(gulp.dest(paths.distDir));
+    .pipe(gulp.dest(paths.webDir));
 
 gulp.task('webpack-development', () => createDist({config: webpackDevConfig, plumb: true}));
 gulp.task('webpack-production', () => createDist({config: webpackProdConfig}));

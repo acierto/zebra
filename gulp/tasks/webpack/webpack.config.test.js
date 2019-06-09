@@ -7,7 +7,7 @@ import {
 
 export default {
     devServer: {
-        contentBase: '/public/zebraDist/libs/js/',
+        contentBase: '/',
         hot: false,
         port: proxyPort,
         publicPath: ''
