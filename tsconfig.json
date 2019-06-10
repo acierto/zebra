@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,12 +17,17 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "outDir": "./zebraDist/",
+    "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "strictNullChecks": false,
     "sourceMap": true,
     "strict": true,
     "target": "es5"
   },
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "src",
     "types.d.ts"
