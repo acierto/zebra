@@ -14,7 +14,7 @@ const dashboardRoutes = [
     },
     {
         path: "/table",
-        name: "Table List",
+        name: "Items",
         icon: "content_paste",
         component: TableList,
         layout: "/admin"
