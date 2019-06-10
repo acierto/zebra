@@ -1,25 +1,18 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes, {Validator} from 'prop-types';
-import {Switch, Route, Redirect} from 'react-router-dom';
-// creates a beautiful scrollbar
+import {Route, Switch} from 'react-router-dom';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
-// @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-// core components
 import Sidebar from './Sidebar/Sidebar';
 import Navbar from './Navbars/Navbar';
 
 import routes from '../routes';
 
 import dashboardStyle from '../../../assets/jss/material-dashboard-react/layouts/dashboardStyle';
-
-// @ts-ignore
 import image from '../../../assets/img/sidebar-2.jpg';
-// @ts-ignore
 import logo from '../../../assets/img/reactlogo.png';
-
 
 const switchRoutes = (
     <Switch>
@@ -132,7 +125,6 @@ class Dashboard extends React.Component<Props, State> {
                         handleDrawerToggle={this.handleDrawerToggle}
                         {...rest}
                     />
-                    {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
                     {this.getRoute() ? (
                         <div className={classes.content}>
                             <div className={classes.container}>{switchRoutes}</div>
