@@ -12,7 +12,7 @@ export const databaseProviders: Provider[] = [
     useFactory: async (logger: LoggerService) => {
       const overrides = {
         entities: [
-          join(__dirname, '..', '**', 'entities', '*.entity{.js,.ts}'),
+          join(__dirname, '..', 'database', 'entities', '*Entity.ts'),
         ],
       };
       const opts = merge(await getConnectionOptions(), overrides);

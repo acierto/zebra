@@ -1,0 +1,24 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "zebra",
+  "password": "zebra",
+  "database": "zebra",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "src/modules/database/entity/**/*.ts"
+  ],
+  "migrations": [
+    "src/modules/database/migration/**/*.ts"
+  ],
+  "subscribers": [
+    "src/modules/database/subscriber/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "src/modules/database/entity",
+    "migrationsDir": "src/modules/database/migration",
+    "subscribersDir": "src/modules/database/subscriber"
+  }
+}
