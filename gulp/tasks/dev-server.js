@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import Q from 'q';
-import R from 'ramda';
+import * as R from 'ramda';
 import getLogger from 'loglevel-colored-level-prefix';
 import bodyParser from 'body-parser';
 import {proxyPort, serverPort} from '../utils/connection';

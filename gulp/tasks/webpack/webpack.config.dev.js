@@ -1,4 +1,4 @@
-import R from 'ramda';
+import * as R from 'ramda';
 import webpack from 'webpack';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import {proxyPort} from '../../utils/connection';

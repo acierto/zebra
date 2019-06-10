@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes, {Validator} from 'prop-types';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import withStyles from '@material-ui/core/styles/withStyles';
