@@ -1,6 +1,6 @@
 import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
-import {RecipesModule} from './recipes/recipes.module';
+import {RecipesModule} from './modules/recipes/recipes.module';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
 

@@ -3,33 +3,34 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-# Date custom scalar type
-scalar Date
+# The javascript `Date` as string. Type represents date and time as the ISO Date string.
+scalar DateTime
 
 type Mutation {
-  addRecipe(newRecipeData: NewRecipeInput!): Recipe!
-  removeRecipe(id: String!): Boolean!
-}
-
-input NewRecipeInput {
-  title: String!
-  description: String
-  ingredients: [String!]!
+  addRecipe(recipe: RecipeInput!): Recipe!
 }
 
 type Query {
-  recipe(id: String!): Recipe!
-  recipes(skip: Int = 0, take: Int = 25): [Recipe!]!
+  recipe(title: String!): Recipe
+
+  # Get all the recipes from around the world
+  recipes: [Recipe!]!
 }
 
+# Object representing cooking recipe
 type Recipe {
-  id: ID!
+  title: String!
+  specification: String @deprecated(reason: "Use `description` field instead")
+
+  # The recipe description with preparation info
+  description: String
+  ratings: [Int!]!
+  creationDate: DateTime!
+  ratingsCount(minRate: Int = 0): Int!
+  averageRating: Float
+}
+
+input RecipeInput {
   title: String!
   description: String
-  creationDate: Date!
-  ingredients: [String!]!
-}
-
-type Subscription {
-  recipeAdded: Recipe!
 }
