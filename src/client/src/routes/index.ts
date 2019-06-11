@@ -2,7 +2,7 @@
 import Dashboard from '@material-ui/icons/Dashboard';
 // core components/views for Admin layout
 import DashboardPage from '../views/Dashboard/Dashboard';
-import TableList from '../views/TableList/TableList';
+import ProductItems from '../views/ProductItems/ProductItems';
 
 const dashboardRoutes = [
     {
@@ -16,7 +16,7 @@ const dashboardRoutes = [
         path: "/table",
         name: "Items",
         icon: "content_paste",
-        component: TableList,
+        component: ProductItems,
         layout: "/admin"
     }
 ];

@@ -4,6 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 // core components
 import GridItem from '../../components/Grid/GridItem';
 import GridContainer from '../../components/Grid/GridContainer';
+import ProductForm from '../../components/ProductForm/ProductForm';
 import Table from '../../components/Table/Table';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/Card/CardHeader';
@@ -39,10 +40,23 @@ const styles = {
     }
 };
 
-function TableList(props) {
+function ProductItems(props) {
     const {classes} = props;
     return (
         <GridContainer>
+            <GridItem xs={12} sm={12} md={12}>
+                <Card>
+                    <CardHeader color="primary">
+                        <h4 className={classes.cardTitleWhite}>Add new item</h4>
+                        <p className={classes.cardCategoryWhite}>
+                            Here you can add new item to the store
+                        </p>
+                    </CardHeader>
+                    <CardBody>
+                        <ProductForm/>
+                    </CardBody>
+                </Card>
+            </GridItem>
             <GridItem xs={12} sm={12} md={12}>
                 <Card>
                     <CardHeader color="primary">
@@ -72,4 +86,4 @@ function TableList(props) {
 }
 
 // @ts-ignore
-export default withStyles(styles)(TableList);
+export default withStyles(styles)(ProductItems);
