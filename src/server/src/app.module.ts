@@ -3,7 +3,6 @@ import {GraphQLModule} from '@nestjs/graphql';
 import {ProductModule} from './modules/products/product-module';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
-import {DatabaseModule} from './modules/database/database.module';
 
 @Module({
     imports: [
@@ -11,8 +10,7 @@ import {DatabaseModule} from './modules/database/database.module';
         GraphQLModule.forRoot({
             installSubscriptionHandlers: true,
             autoSchemaFile: 'schema.gql',
-        }),
-        DatabaseModule
+        })
     ],
     controllers: [AppController],
     providers: [AppService],
