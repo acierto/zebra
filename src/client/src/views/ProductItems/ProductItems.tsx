@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import React from 'react';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -9,6 +10,8 @@ import Table from '../../components/Table/Table';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/Card/CardHeader';
 import CardBody from '../../components/Card/CardBody';
+import {Query} from 'react-apollo';
+import {gql} from 'apollo-boost';
 
 const styles = {
     cardCategoryWhite: {
@@ -40,6 +43,27 @@ const styles = {
     }
 };
 
+const GET_ALL_PRODUCTS = gql`
+  {
+      products {
+        name,
+        description,
+        price
+      }
+  }
+`;
+
+interface ProductType {
+    description: string,
+    name: string,
+    price: number
+}
+
+const toTableData = (data) => R.pipe(
+    R.propOr([], 'products'),
+    R.map((item: ProductType) => [item.name, item.description, item.price])
+)(data);
+
 function ProductItems(props) {
     const {classes} = props;
     return (
@@ -66,18 +90,15 @@ function ProductItems(props) {
                         </p>
                     </CardHeader>
                     <CardBody>
-                        <Table
-                            tableHeaderColor="primary"
-                            tableHead={['Name', 'Description', 'Price']}
-                            tableData={[
-                                ['Bread', '1 loaf', '$2,66'],
-                                ['Cucumber', '0.5kg', '$2,56'],
-                                ['Tomato', '0.5kg', '$1,45'],
-                                ['Tea', '20 bags', '$1,5'],
-                                ['Coffee', '0.2kg', '$5'],
-                                ['Olive oil', '0.7l', '$8']
-                            ]}
-                        />
+                        <Query query={GET_ALL_PRODUCTS}>
+                            {({data}) =>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={['Name', 'Description', 'Price']}
+                                    tableData={toTableData(data)}
+                                />
+                            }
+                        </Query>
                     </CardBody>
                 </Card>
             </GridItem>
