@@ -61,7 +61,7 @@ interface ProductType {
 
 const toTableData = (data) => R.pipe(
     R.propOr([], 'products'),
-    R.map((item: ProductType) => [item.name, item.description, item.price])
+    R.map((item: ProductType) => [item.name, item.description, `${item.price}`])
 )(data);
 
 function ProductItems(props) {
