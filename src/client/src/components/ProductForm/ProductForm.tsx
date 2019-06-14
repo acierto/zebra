@@ -76,19 +76,19 @@ function ProductForm() {
                             <Grid item xs={6}>
                                 <Field
                                     fullWidth
-                                    name="description"
+                                    name="price"
                                     component={TextField}
-                                    type="text"
-                                    label="Description"
+                                    type="number"
+                                    label="Price"
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <Field
-                                    name="price"
+                                    name="description"
                                     fullWidth
                                     component={TextField}
-                                    type="number"
-                                    label="Price"
+                                    type="text"
+                                    label="Description"
                                 />
                             </Grid>
                             <Grid item style={{marginTop: 16}}>

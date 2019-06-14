@@ -6,7 +6,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import GridItem from '../../components/Grid/GridItem';
 import GridContainer from '../../components/Grid/GridContainer';
 import ProductForm from '../../components/ProductForm/ProductForm';
-import Table from '../../components/Table/Table';
+import MaterialTable from 'material-table';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/Card/CardHeader';
 import CardBody from '../../components/Card/CardBody';
@@ -92,10 +92,13 @@ function ProductItems(props) {
                     <CardBody>
                         <Query query={GET_ALL_PRODUCTS}>
                             {({data}) =>
-                                <Table
-                                    tableHeaderColor="primary"
-                                    tableHead={['Name', 'Description', 'Price']}
-                                    tableData={toTableData(data)}
+                                <MaterialTable
+                                    columns={[
+                                        {title: 'Name', field: 'name'},
+                                        {title: 'Description', field: 'description'},
+                                        {title: 'Price', field: 'price', type: 'numeric'}
+                                    ]}
+                                    data={R.propOr([], 'products', data)}
                                 />
                             }
                         </Query>

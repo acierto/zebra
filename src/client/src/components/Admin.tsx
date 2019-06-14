@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes, {Validator} from 'prop-types';
 import {Route, Switch} from 'react-router';
-import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Sidebar from './Sidebar/Sidebar';
@@ -45,6 +43,7 @@ interface State {
 
 class Dashboard extends React.Component<Props, State> {
     static propTypes: { classes: Validator<NonNullable<object>> };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -56,19 +55,6 @@ class Dashboard extends React.Component<Props, State> {
         };
     }
 
-    handleImageClick = image => {
-        this.setState({image: image});
-    };
-    handleColorClick = color => {
-        this.setState({color: color});
-    };
-    handleFixedClick = () => {
-        if (this.state.fixedClasses === 'dropdown') {
-            this.setState({fixedClasses: 'dropdown show'});
-        } else {
-            this.setState({fixedClasses: 'dropdown'});
-        }
-    };
     handleDrawerToggle = () => {
         this.setState({mobileOpen: !this.state.mobileOpen});
     };
@@ -84,10 +70,6 @@ class Dashboard extends React.Component<Props, State> {
     };
 
     componentDidMount() {
-        if (navigator.platform.indexOf('Win') > -1) {
-            // @ts-ignore
-            const ps = new PerfectScrollbar(this.refs.mainPanel);
-        }
         window.addEventListener('resize', this.resizeFunction);
     }
 
@@ -111,7 +93,7 @@ class Dashboard extends React.Component<Props, State> {
             <div className={classes.wrapper}>
                 <Sidebar
                     routes={routes}
-                    logoText={'Creative Tim'}
+                    logoText={'Zebra'}
                     logo={logo}
                     image={this.state.image}
                     handleDrawerToggle={this.handleDrawerToggle}
