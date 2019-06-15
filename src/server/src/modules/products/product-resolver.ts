@@ -1,4 +1,4 @@
-import {Args, Query, Mutation, Resolver} from '@nestjs/graphql';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {Product} from './models/product';
 import {ProductService} from './product-service';
 import {ProductInput} from './dto/productInput';
@@ -30,5 +30,10 @@ export class ProductResolver {
         });
         await this.productService.save(product);
         return product;
+    }
+
+    @Mutation(returns => Product)
+    async removeProduct(@Args('name') name: string) {
+        await this.productService.remove(name);
     }
 }

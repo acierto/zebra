@@ -5,6 +5,6 @@ export const photoProviders = [
     {
         provide: 'PRODUCT_REPOSITORY',
         useFactory: (connection: Connection) => connection.getRepository(ProductEntity),
-        inject: ['ZEBRA_DB_CONNECTION'],
+        inject: ['ZEBRA_DB_CONNECTION']
     },
 ];

@@ -5,9 +5,11 @@
 
 type Mutation {
   addProduct(product: ProductInput!): Product!
+  removeProduct(name: String!): Product!
 }
 
 type Product {
+  id: ID!
   name: String!
   description: String
   price: Float!

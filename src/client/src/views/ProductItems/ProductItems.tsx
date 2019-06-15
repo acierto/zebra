@@ -10,7 +10,7 @@ import MaterialTable from 'material-table';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/Card/CardHeader';
 import CardBody from '../../components/Card/CardBody';
-import {Query} from 'react-apollo';
+import {compose, graphql, withApollo} from 'react-apollo';
 import {gql} from 'apollo-boost';
 
 const styles = {
@@ -53,19 +53,16 @@ const GET_ALL_PRODUCTS = gql`
   }
 `;
 
-interface ProductType {
-    description: string,
-    name: string,
-    price: number
-}
-
-const toTableData = (data) => R.pipe(
-    R.propOr([], 'products'),
-    R.map((item: ProductType) => [item.name, item.description, `${item.price}`])
-)(data);
+const REMOVE_PRODUCT = gql`
+  mutation RemoveProduct($name: String!) {
+    removeProduct(name: $name) {
+     name
+    } 
+  } 
+`;
 
 function ProductItems(props) {
-    const {classes} = props;
+    const {allProducts, classes, removeProduct} = props;
     return (
         <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
@@ -90,18 +87,28 @@ function ProductItems(props) {
                         </p>
                     </CardHeader>
                     <CardBody>
-                        <Query query={GET_ALL_PRODUCTS}>
-                            {({data}) =>
-                                <MaterialTable
-                                    columns={[
-                                        {title: 'Name', field: 'name'},
-                                        {title: 'Description', field: 'description'},
-                                        {title: 'Price', field: 'price', type: 'numeric'}
-                                    ]}
-                                    data={R.propOr([], 'products', data)}
-                                />
-                            }
-                        </Query>
+                        <MaterialTable
+                            actions={[
+                                rowData => ({
+                                    icon: 'delete',
+                                    tooltip: 'Delete Product',
+                                    onClick: (event, rowData) => removeProduct({
+                                        variables: {name: rowData.name}
+                                    })
+                                })
+                            ]}
+                            columns={[
+                                {title: 'Name', field: 'name'},
+                                {title: 'Price', field: 'price'},
+                                {title: 'Description', field: 'description'}
+                            ]}
+                            data={R.propOr([], 'products', allProducts)}
+                            options={{
+                                actionsColumnIndex: -1
+                            }}
+                            title={''}
+                        />
+                        }
                     </CardBody>
                 </Card>
             </GridItem>
@@ -109,5 +116,10 @@ function ProductItems(props) {
     );
 }
 
-// @ts-ignore
-export default withStyles(styles)(ProductItems);
+export default compose(
+    withApollo,
+    // @ts-ignore
+    withStyles(styles),
+    graphql(GET_ALL_PRODUCTS, {name: 'allProducts'}),
+    graphql(REMOVE_PRODUCT, {name: 'removeProduct'})
+)(ProductItems);
