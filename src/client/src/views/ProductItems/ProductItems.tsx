@@ -11,6 +11,7 @@ import CardBody from '../../components/Card/CardBody';
 import {compose, withApollo} from 'react-apollo';
 import GET_ALL_PRODUCTS from '../../queries/get-all-products';
 import REMOVE_PRODUCT from '../../mutations/remove-product-mutation';
+import {localeMessages} from '../../services/locale-service';
 
 const styles = {
     cardCategoryWhite: {
@@ -49,9 +50,9 @@ function ProductItems(props) {
             <GridItem xs={12} sm={12} md={12}>
                 <Card>
                     <CardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite}>Add new item</h4>
+                        <h4 className={classes.cardTitleWhite}>{localeMessages.addNewProductItemTitle}</h4>
                         <p className={classes.cardCategoryWhite}>
-                            Here you can add new item to the store
+                            {localeMessages.addNewProductItemDescription}
                         </p>
                     </CardHeader>
                     <CardBody>
@@ -62,9 +63,9 @@ function ProductItems(props) {
             <GridItem xs={12} sm={12} md={12}>
                 <Card>
                     <CardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite}>All items</h4>
+                        <h4 className={classes.cardTitleWhite}>{localeMessages.allProductsTitle}</h4>
                         <p className={classes.cardCategoryWhite}>
-                            Here you can see all items in the store
+                            {localeMessages.allProductsDescription}
                         </p>
                     </CardHeader>
                     <CardBody>
@@ -72,16 +73,16 @@ function ProductItems(props) {
                             actions={[
                                 rowData => ({
                                     icon: 'delete',
-                                    tooltip: 'Delete Product',
+                                    tooltip: localeMessages.deleteProductTooltip,
                                     onClick: (event, rowData) => removeProduct({
                                         variables: {name: rowData.name}
                                     })
                                 })
                             ]}
                             columns={[
-                                {title: 'Name', field: 'name'},
-                                {title: 'Price', field: 'price'},
-                                {title: 'Description', field: 'description'}
+                                {title: localeMessages.nameLabel, field: 'name'},
+                                {title: localeMessages.priceLabel, field: 'price'},
+                                {title: localeMessages.descriptionLabel, field: 'description'}
                             ]}
                             data={R.propOr([], 'products', allProducts)}
                             options={{

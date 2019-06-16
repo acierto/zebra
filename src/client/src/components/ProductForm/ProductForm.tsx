@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import MuiTextField from '@material-ui/core/TextField';
 import {compose, withApollo} from 'react-apollo';
 import ADD_PRODUCT from '../../mutations/add-product-mutation';
+import {localeMessages} from '../../services/locale-service';
 
 const TextField = ({input: {name, onChange, value, ...restInput}, meta, ...rest}) => (
     <MuiTextField
@@ -60,7 +61,7 @@ function ProductForm({addProduct}) {
                                 name="name"
                                 component={TextField}
                                 type="text"
-                                label="Name"
+                                label={localeMessages.nameLabel}
                             />
                         </Grid>
                         <Grid item xs={6}>
@@ -69,7 +70,7 @@ function ProductForm({addProduct}) {
                                 name="price"
                                 component={TextField}
                                 type="number"
-                                label="Price"
+                                label={localeMessages.priceLabel}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -78,7 +79,7 @@ function ProductForm({addProduct}) {
                                 fullWidth
                                 component={TextField}
                                 type="text"
-                                label="Description"
+                                label={localeMessages.descriptionLabel}
                             />
                         </Grid>
                         <Grid item style={{marginTop: 16}}>
