@@ -42,8 +42,9 @@ export class ProductService {
         return await this.productRepository.save(product);
     }
 
-    async remove(name: string) {
+    async remove(name: string): Promise<Product> {
         const product = await this.find(name);
         await this.productRepository.remove(ProductService.toEntity(product));
+        return product;
     }
 }

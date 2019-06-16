@@ -10,8 +10,9 @@ import MaterialTable from 'material-table';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/Card/CardHeader';
 import CardBody from '../../components/Card/CardBody';
-import {compose, graphql, withApollo} from 'react-apollo';
-import {gql} from 'apollo-boost';
+import {compose, withApollo} from 'react-apollo';
+import GET_ALL_PRODUCTS from '../../queries/get-all-products';
+import REMOVE_PRODUCT from '../../mutations/remove-product-mutation';
 
 const styles = {
     cardCategoryWhite: {
@@ -42,24 +43,6 @@ const styles = {
         }
     }
 };
-
-const GET_ALL_PRODUCTS = gql`
-  {
-      products {
-        name,
-        description,
-        price
-      }
-  }
-`;
-
-const REMOVE_PRODUCT = gql`
-  mutation RemoveProduct($name: String!) {
-    removeProduct(name: $name) {
-     name
-    } 
-  } 
-`;
 
 function ProductItems(props) {
     const {allProducts, classes, removeProduct} = props;
@@ -108,7 +91,6 @@ function ProductItems(props) {
                             }}
                             title={''}
                         />
-                        }
                     </CardBody>
                 </Card>
             </GridItem>
@@ -120,6 +102,6 @@ export default compose(
     withApollo,
     // @ts-ignore
     withStyles(styles),
-    graphql(GET_ALL_PRODUCTS, {name: 'allProducts'}),
-    graphql(REMOVE_PRODUCT, {name: 'removeProduct'})
+    GET_ALL_PRODUCTS,
+    REMOVE_PRODUCT
 )(ProductItems);

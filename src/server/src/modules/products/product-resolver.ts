@@ -34,6 +34,6 @@ export class ProductResolver {
 
     @Mutation(returns => Product)
     async removeProduct(@Args('name') name: string) {
-        await this.productService.remove(name);
+        return await this.productService.remove(name);
     }
 }

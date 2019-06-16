@@ -5,8 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import MuiTextField from '@material-ui/core/TextField';
-import {compose, graphql, withApollo} from 'react-apollo';
-import {gql} from 'apollo-boost';
+import {compose, withApollo} from 'react-apollo';
+import ADD_PRODUCT from '../../mutations/add-product-mutation';
 
 const TextField = ({input: {name, onChange, value, ...restInput}, meta, ...rest}) => (
     <MuiTextField
@@ -43,16 +43,6 @@ const validate = values => {
     }
     return errors;
 };
-
-const ADD_PRODUCT = gql`
-  mutation AddProduct($product: ProductInput!) {
-   addProduct(product: $product) {
-    name,
-    description,
-    price
-   }
-  }
-`;
 
 function ProductForm({addProduct}) {
     return <Form
@@ -120,6 +110,6 @@ function ProductForm({addProduct}) {
 export default compose
 (
     withApollo,
-    graphql(ADD_PRODUCT, {name: 'addProduct'})
+    ADD_PRODUCT
 )
 (ProductForm);
