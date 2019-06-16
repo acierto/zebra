@@ -1,16 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 
 @Injectable()
 export class LoggerService {
   debug(...args) {
-    console.log(...args); // tslint:disable-line
+    console.log(...args);
   }
 
   info(...args) {
-    console.info(...args); // tslint:disable-line
+    console.info(...args);
   }
 
   error(...args) {
-    console.error(...args); // tslint:disable-line
+    console.error(...args);
   }
 }
