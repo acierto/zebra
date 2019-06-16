@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
 import Menu from '@material-ui/icons/Menu';
 import Button from '../CustomButtons/Button';
-
 import headerStyle from '../../../../assets/jss/material-dashboard-react/components/headerStyle';
 
 function Header({...props}) {
