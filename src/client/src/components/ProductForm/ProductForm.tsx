@@ -21,7 +21,7 @@ const TextField = ({input: {name, onChange, value, ...restInput}, meta, ...rest}
     />
 );
 
-const onSubmit = (mutate) => async values => {
+const onSubmit = (mutate) => async (values, form) => {
     mutate({
         variables: {
             product: R.evolve({
@@ -29,6 +29,7 @@ const onSubmit = (mutate) => async values => {
             }, values)
         }
     });
+    form.reset();
 };
 const validate = values => {
     const errors: any = {};
@@ -49,7 +50,7 @@ function ProductForm({addProduct}) {
         onSubmit={onSubmit(addProduct)}
         validate={validate}
         //@ts-ignore
-        render={({handleSubmit, reset, submitting, pristine}) => (
+        render={({handleSubmit, form, submitting, pristine}) => (
             <form onSubmit={handleSubmit}>
                 <Paper style={{padding: 8}}>
                     <Grid container alignItems="flex-start" spacing={8}>
@@ -84,7 +85,7 @@ function ProductForm({addProduct}) {
                             <Button
                                 type="button"
                                 variant="contained"
-                                onClick={reset}
+                                onClick={form.reset}
                                 disabled={submitting || pristine}
                             >
                                 Reset
