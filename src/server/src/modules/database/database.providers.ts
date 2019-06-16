@@ -1,7 +1,6 @@
 import {Provider} from '@nestjs/common';
 import {getConnectionToken} from '@nestjs/typeorm';
 import {createConnection, getConnectionOptions} from 'typeorm';
-import {join} from 'path';
 import {merge} from 'lodash';
 
 import {LoggerService} from '../../common/services';
