@@ -1,7 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const doiuse = require('doiuse');
 const flexBugsFixes = require('postcss-flexbugs-fixes');
-const warnCleaner = require('postcss-warn-cleaner');
 
 module.exports = {
     plugins: [
@@ -14,7 +13,6 @@ module.exports = {
                 throw new Error(`You are using not supported CSS by all specified browsers. ${val.message}`);
             }
         }),
-        flexBugsFixes(),
-        warnCleaner({ignoreFiles: '**/select2/select2.css'})
+        flexBugsFixes()
     ]
 };
