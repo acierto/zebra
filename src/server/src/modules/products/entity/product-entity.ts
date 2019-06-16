@@ -12,7 +12,7 @@ export class ProductEntity {
     @Column()
     description: string;
 
-    @Column()
+    @Column('float')
     price: number;
 
 }
