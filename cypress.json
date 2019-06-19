@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:6517",
+  "defaultCommandTimeout": 5000,
+  "fixturesFolder": "src/client/test/e2e/cypress/fixtures",
+  "integrationFolder": "src/client/test/e2e/cypress/specs",
+  "pluginsFile": "src/client/test/e2e/cypress/plugins",
+  "screenshotsFolder": "src/client/test/e2e/cypress/screenshots",
+  "videosFolder": "src/client/test/e2e/cypress/videos",
+  "viewportHeight": 768,
+  "viewportWidth": 1024
+}
