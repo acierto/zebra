@@ -1,3 +1,4 @@
+import R from 'ramda';
 import {spawn} from 'child_process';
 
 export const runProcess = (command, args, cwd, cb) => {
@@ -11,4 +12,4 @@ export const runProcess = (command, args, cwd, cb) => {
     child.on('close', cb);
 };
 
-export const runNpmCommand = (command, cwd, cb) => runProcess('npm', ['run', command], cwd, cb);
+export const runNpmCommand = (command, cwd, cb = R.F) => runProcess('npm', ['run', command], cwd, cb);
