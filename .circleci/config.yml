@@ -47,11 +47,3 @@ workflows:
           parallelism: 2
           group: '2x-chrome'
           start: 'node_modules/gulp/bin/gulp.js e2e'
-
-      - release:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - 3 machines
