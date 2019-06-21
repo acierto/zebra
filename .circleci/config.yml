@@ -30,7 +30,7 @@ workflows:
       - cypress/install:
           name: 'Linux install'
           # and builds the app using this command
-          build: 'npm run build'
+          build: 'npm install'
 
       # run on 2 machines using Chrome browser
       - cypress/run:
