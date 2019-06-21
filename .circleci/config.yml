@@ -35,7 +35,6 @@ workflows:
             - Linux install
           # use executor with Chrome installed
           executor: cypress/browsers-chrome69
-          # use browser "chrome" for running tests
           browser: chrome
           record: true
           parallel: true
