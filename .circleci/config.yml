@@ -13,7 +13,7 @@ workflows:
   build:
     jobs:
       - cypress/install:
-          build: 'yarn'  # run a custom app build step
+          build: 'npm install'  # run a custom app build step
       - cypress/run:
           requires:
             - cypress/install
