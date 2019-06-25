@@ -96,6 +96,7 @@
     "strip-sourcemap-loader": "0.0.1",
     "style-loader": "0.23.1",
     "ts-loader": "6.0.2",
+    "ts-node": "8.3.0",
     "typescript": "3.5.1",
     "webpack": "4.29.6",
     "webpack-dev-server": "3.2.1",
