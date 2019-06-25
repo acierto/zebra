@@ -12,17 +12,14 @@ orbs:
 workflows:
   build:
     jobs:
-      - zebra/install:
-          build: 'npm install'
-      - server/install:
-          build: 'npm install'
-          working_directory: 'src/server'
+      - cypress/install:
+          build: 'yarn install --frozen-lockfile'
       - cypress/run:
           requires:
-            - zebra/install
-            - server/install
+            - cypress/install
           record: true        # record results on Cypress Dashboard
           parallel: true      # split all specs across machines
           parallelism: 4      # use 4 CircleCI machines to finish quickly
           group: 'all tests'  # name this group "all tests" on the dashboard
           start: 'node_modules/gulp/bin/gulp.js e2e'  # start server before running tests
+          yarn: true
