@@ -12,11 +12,15 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install:
-          build: 'npm install'  # run a custom app build step
+      - zebra/install:
+          build: 'npm install'
+      - server/install:
+          build: 'npm install'
+          working_directory: 'src/server'
       - cypress/run:
           requires:
-            - cypress/install
+            - zebra/install
+            - server/install
           record: true        # record results on Cypress Dashboard
           parallel: true      # split all specs across machines
           parallelism: 4      # use 4 CircleCI machines to finish quickly
