@@ -1,24 +1,36 @@
-# testing using CircleCI orb
-# see https://on.cypress.io/circleci-orb
-
-# for non-orb configuration see old commit
-# https://github.com/cypress-io/cypress-example-kitchensink/blob/aabb10cc1bb9dee88e1bf28e0af5e9661427ee7a/circle.yml
-
-# to use CircleCI orbs need to use version >= 2.1
-version: 2.1
-orbs:
-  # use Cypress orb from CircleCI registry
-  cypress: cypress-io/cypress@1.5.1
-workflows:
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+version: 2
+jobs:
   build:
-    jobs:
-      - cypress/install:
-          build: 'npm run bootstrap'
-      - cypress/run:
-          requires:
-            - cypress/install
-          record: true        # record results on Cypress Dashboard
-          parallel: true      # split all specs across machines
-          parallelism: 4      # use 4 CircleCI machines to finish quickly
-          group: 'all tests'  # name this group "all tests" on the dashboard
-          start: 'node_modules/gulp/bin/gulp.js e2e'  # start server before running tests
+    docker:
+      # specify the version you desire here
+      - image: circleci/12.4.0-browsers
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # the working dir is github repo that you need to fork to become owner.
+    working_directory: ~/nightwatch-saple-for-circleci
+    steps:
+      - checkout
+
+      - run:
+          name: "Setup custom environment variables // its your workflow step"
+          command: |
+            echo 'export LT_USERNAME="{your_lambdatest_username}"' >> $BASH_ENV
+      - run:
+          name: "Setup custom environment variables"
+          command: |
+            echo 'export LT_ACCESS_KEY="{your_lambda_access_key}"' >> $BASH_ENV
+      - run: # Validating your above mentioned environment variables
+          name: "Here is the LT_Username : "
+          command: echo ${LT_USERNAME}
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+      - run: npm install
+      - run: npm run bootstrap
+      # run tests!
+      - run: node_modules/gulp/bin/gulp.js e2e
