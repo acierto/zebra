@@ -13,5 +13,3 @@ export const runProcess = (command, args, cwd, cb) => {
 };
 
 export const runNpmCommand = (command, cwd, cb = R.F) => runProcess('npm', ['run', command], cwd, cb);
-
-export const npmInstall = (cwd, cb) => runProcess('npm', ['install'], cwd, cb);

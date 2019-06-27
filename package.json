@@ -2,7 +2,12 @@
   "author": "Bogdan Nechyporenko",
   "name": "zebra",
   "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "src/**"
+  ],
   "scripts": {
+    "bootstrap": "lerna exec -- npm install",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
@@ -85,6 +90,7 @@
     "html-webpack-include-assets-plugin": "1.0.7",
     "html-webpack-plugin": "3.2.0",
     "image-webpack-loader": "4.6.0",
+    "lerna": "3.15.0",
     "loglevel-colored-level-prefix": "1.0.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",

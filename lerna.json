@@ -1,0 +1,11 @@
+{
+  "npmClient": "yarn",
+  "version": "independent",
+  "parallel": true,
+  "stream": true,
+  "packages": [
+    "src/**"
+  ],
+  "useWorkspaces": true,
+  "workspaces": ["src/*"]
+}

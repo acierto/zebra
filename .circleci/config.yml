@@ -13,7 +13,7 @@ workflows:
   build:
     jobs:
       - cypress/install:
-          build: 'yarn install --frozen-lockfile'
+          build: 'npm run bootstrap'
       - cypress/run:
           requires:
             - cypress/install
@@ -22,4 +22,3 @@ workflows:
           parallelism: 4      # use 4 CircleCI machines to finish quickly
           group: 'all tests'  # name this group "all tests" on the dashboard
           start: 'node_modules/gulp/bin/gulp.js e2e'  # start server before running tests
-          yarn: true
