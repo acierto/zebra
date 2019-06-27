@@ -5,26 +5,13 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:10
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # the working dir is github repo that you need to fork to become owner.
-    working_directory: ~/nightwatch-saple-for-circleci
     steps:
       - checkout
-
-      - run:
-          name: "Setup custom environment variables // its your workflow step"
-          command: |
-            echo 'export LT_USERNAME="{your_lambdatest_username}"' >> $BASH_ENV
-      - run:
-          name: "Setup custom environment variables"
-          command: |
-            echo 'export LT_ACCESS_KEY="{your_lambda_access_key}"' >> $BASH_ENV
-      - run: # Validating your above mentioned environment variables
-          name: "Here is the LT_Username : "
-          command: echo ${LT_USERNAME}
       # Download and cache dependencies
       - restore_cache:
           keys:
