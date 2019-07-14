@@ -5,11 +5,11 @@ jobs:
       - image: circleci/node:12
 
       - image: circleci/mysql:5.7
-          environment:
-            MYSQL_ROOT_PASSWORD: zebra
-            MYSQL_DATABASE: zebra
-            MYSQL_USER: zebra
-            MYSQL_PASSWORD: zebra
+        environment:
+          MYSQL_ROOT_PASSWORD: zebra
+          MYSQL_DATABASE: zebra
+          MYSQL_USER: zebra
+          MYSQL_PASSWORD: zebra
     steps:
       - checkout
       - restore_cache:
