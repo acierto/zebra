@@ -1,23 +1,34 @@
-# Javascript Node CircleCI 2.0 configuration file
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:10
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # the working dir is github repo that you need to fork to become owner.
+      - image: circleci/node:12
+      - image: circleci/mysql:5.7
+          environment:
+            MYSQL_ROOT_PASSWORD: zebra
+            MYSQL_DATABASE: zebra
+            MYSQL_USER: zebra
+            MYSQL_PASSWORD: zebra
     steps:
       - checkout
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 30`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+      - run:
+          name: Install MySQL CLI
+          command: |
+            sudo apt-get install mysql-client
       - run: npm install
       - run: npm run bootstrap
-      # run tests!
       - run: node_modules/gulp/bin/gulp.js e2e
