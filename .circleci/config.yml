@@ -16,7 +16,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
-      - run
+      - run:
           name: Installing libgtk-3-0
           command: |
             sudo apt install libgtk-3-0
