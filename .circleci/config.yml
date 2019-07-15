@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Installing libraries for Cypress
           command: |
-            sudo apt-get install libgtk-3-0 libxss1 libgconf-2-4
+            sudo apt-get install libgtk-3-0 libxss1 libgconf-2-4 libgtkextra-dev libnss3 libasound2 libxtst-dev
       - run:
           name: Waiting for MySQL to be ready
           command: |
