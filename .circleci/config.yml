@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:12
-
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ROOT_PASSWORD: zebra
@@ -15,7 +14,6 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
       - run:
           name: Installing libraries for Cypress
           command: |

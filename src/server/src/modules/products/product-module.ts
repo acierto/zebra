@@ -1,15 +1,15 @@
 import {Module} from '@nestjs/common';
 import {DatabaseModule} from '../database/database.module';
-import {photoProviders} from './product-providers';
+import {productProviders} from './product-providers';
 import {ProductService} from './product-service';
 import {ProductResolver} from './product-resolver';
 
 @Module({
     imports: [DatabaseModule],
     providers: [
-        ...photoProviders,
-        ProductService,
-        ProductResolver
+        ...productProviders, // creates a connection to a product repository
+        ProductService, // creates a transformation to DB entities and GraphQL objects
+        ProductResolver // creates a layer to communicate with a database
     ],
 })
 export class ProductModule {

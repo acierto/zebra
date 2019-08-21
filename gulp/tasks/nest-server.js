@@ -2,10 +2,11 @@ import axios from 'axios';
 import gulp from 'gulp';
 import paths from '../utils/paths';
 import {runNpmCommand} from '../utils/process-util';
+import {serverPort} from '../utils/connection';
 
 const maxAttempt = 5;
 const timeout = 5000;
-const url = 'http://localhost:3333/ping';
+const url = `http://localhost:${serverPort}/ping`;
 
 let attempt = 1;
 

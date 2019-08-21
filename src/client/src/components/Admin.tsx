@@ -34,10 +34,6 @@ interface Props {
 }
 
 interface State {
-    image: any,
-    color: string,
-    hasImage: boolean,
-    fixedClasses: string,
     mobileOpen: boolean
 }
 
@@ -46,13 +42,7 @@ class Dashboard extends React.Component<Props, State> {
 
     constructor(props) {
         super(props);
-        this.state = {
-            image: image,
-            color: 'blue',
-            hasImage: true,
-            fixedClasses: 'dropdown show',
-            mobileOpen: false
-        };
+        this.state = {mobileOpen: false};
     }
 
     handleDrawerToggle = () => {
@@ -95,10 +85,10 @@ class Dashboard extends React.Component<Props, State> {
                     routes={routes}
                     logoText={'Zebra'}
                     logo={logo}
-                    image={this.state.image}
+                    image={image}
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.mobileOpen}
-                    color={this.state.color}
+                    color="blue"
                     {...rest}
                 />
                 <div className={classes.mainPanel} ref="mainPanel">
