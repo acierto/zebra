@@ -27,4 +27,8 @@ If everything went well you can access:
  * GraphQL: http://localhost:3333/graphql
  * To ping backend: http://localhost:3333/ping
  
+ ## GUI 
+ 
+ [Zebra Products](docs/zebra-products.png)
+ 
  
