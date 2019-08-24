@@ -5,7 +5,7 @@ title: How React components communicate with GraphQL
 
 Let’s have a look at it starting from the React component in ```ProductItems.tsx```
 
-```js
+```jsx
 export default compose(
     withApollo,
     // @ts-ignore
@@ -21,7 +21,7 @@ If you’ll open both of them, you’ll find that there is name defined in each 
 For example in _GET_ALL_PRODUCTS_ defined allProducts name, 
 and that’s why we destruct it from properties in _ProductsItem_:
 
-```js
+```jsx
 function ProductItems(props) {
     const {allProducts, classes, removeProduct} = props;
     ...
@@ -29,7 +29,7 @@ function ProductItems(props) {
 
 How query itself is defined:
 
-```js
+```jsx
 import {gql} from 'apollo-boost';
 import {graphql} from 'react-apollo';
 
@@ -50,7 +50,7 @@ So in essence you provide a GraphQL query which options containing at least a na
 
 Same way works data modification with extra parameters. Let’s have a look at ```add-product-mutation.ts```
 
-```js
+```jsx
 import {gql} from 'apollo-boost';
 import {graphql} from 'react-apollo';
 import {GET_ALL_PRODUCTS} from '../queries/get-all-products';

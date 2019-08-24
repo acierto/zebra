@@ -8,7 +8,7 @@ As a backend server Nest.js is used. It contains quite a lot of functionality wh
   ```ts-node -r tsconfig-paths/register src/main.ts``` 
 Let's have a look at ```main.ts``` file:
 
-```js
+```jsx
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -22,7 +22,7 @@ bootstrap();
 We are creating the main module of application (line 8) and waiting when application will be started by 
 listening the defined port. This is an entry point of the backend part of the application.
 
-```js
+```jsx
 import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
 import {ProductModule} from './modules/products/product-module';
@@ -48,7 +48,7 @@ then you’ll make your application granular enough to be split on logical parts
 And after a time you can replace/remove outdated parts with less hassle. 
 As at this point of time current implementation contains only one module — _ProductModule_.
 
-```js
+```jsx
 import {Module} from '@nestjs/common';
 import {DatabaseModule} from '../database/database.module';
 import {productProviders} from './product-providers';

@@ -77,7 +77,7 @@ Redux by keeping the internal state of components inside, so then you can easily
  or even just by defining the state. That’s way more flexible and stable approach comparing to keeping internal state 
  inside of the component itself. As it is done now in ```Admin.tsx```
  
- ```js
+ ```jsx
 class Dashboard extends React.Component<Props, State> {
     static propTypes: { classes: Validator<NonNullable<object>> };
 
