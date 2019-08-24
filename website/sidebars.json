@@ -1,0 +1,22 @@
+{
+  "docs": {
+    "Getting started": [
+      "introduction",
+      {
+        "type": "subcategory",
+        "label": "Technology stack",
+        "ids": [
+          "circle-ci",
+          "gulp",
+          "lerna",
+          "webpack",
+          "nest",
+          "typeorm",
+          "graphql",
+          "frontend",
+          "react-graphql"
+        ]
+      }
+    ]
+  }
+}
