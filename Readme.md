@@ -12,8 +12,8 @@ To build the project you need to have installed on your local computer
 * MySQL 5.7 and create database "zebra" with credentials "zebra"/"zebra"
 
 After you have aforementioned tools installed and configured you need to run:
-* npm install 
-* npm run bootstrap
+* ```npm install``` 
+* ```npm run bootstrap```
 
 First command will download all necessary JS modules and second will build the project with help of Lerna.
 
