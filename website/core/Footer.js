@@ -68,8 +68,7 @@ class Footer extends React.Component {
                     </div>
                     <div>
                         <h5>More</h5>
-                        <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-                        <a href="https://github.com/">GitHub</a>
+                        <a href="https://github.com/acierto/zebra">GitHub</a>
                         <a
                             className="github-button"
                             href={this.props.config.repoUrl}
@@ -106,19 +105,6 @@ class Footer extends React.Component {
                         )}
                     </div>
                 </section>
-
-                <a
-                    href="https://opensource.facebook.com/"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="fbOpenSource">
-                    <img
-                        src={`${this.props.config.baseUrl}img/oss_logo.png`}
-                        alt="Facebook Open Source"
-                        width="170"
-                        height="45"
-                    />
-                </a>
                 <section className="copyright">{this.props.config.copyright}</section>
             </footer>
         );

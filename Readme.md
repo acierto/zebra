@@ -27,6 +27,15 @@ If everything went well you can access:
  * GraphQL: http://localhost:3333/graphql
  * To ping backend: http://localhost:3333/ping
  
+ ## Documentation
+ 
+ For documentation used Docusaurus. To run the server:
+  * ```cd website```
+  * ```yarn start --port=5555``` 
+  
+  Afterwards browser will be automatically opened at page: http://localhost:5555. As you guessed the port 
+  you can define whatever you like the best. By default it is 3000.
+ 
  ## GUI 
  
  [Zebra Products](docs/zebra-products.png)
