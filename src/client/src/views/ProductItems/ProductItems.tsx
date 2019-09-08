@@ -69,27 +69,29 @@ function ProductItems(props) {
                         </p>
                     </CardHeader>
                     <CardBody>
-                        <MaterialTable
-                            actions={[
-                                rowData => ({
-                                    icon: 'delete',
-                                    tooltip: localeMessages.deleteProductTooltip,
-                                    onClick: (event, rowData) => removeProduct({
-                                        variables: {name: rowData.name}
+                        <div className="product-list">
+                            <MaterialTable
+                                actions={[
+                                    rowData => ({
+                                        icon: 'delete',
+                                        tooltip: localeMessages.deleteProductTooltip,
+                                        onClick: (event, rowData) => removeProduct({
+                                            variables: {name: rowData.name}
+                                        })
                                     })
-                                })
-                            ]}
-                            columns={[
-                                {title: localeMessages.nameLabel, field: 'name'},
-                                {title: localeMessages.priceLabel, field: 'price'},
-                                {title: localeMessages.descriptionLabel, field: 'description'}
-                            ]}
-                            data={R.propOr([], 'products', allProducts)}
-                            options={{
-                                actionsColumnIndex: -1
-                            }}
-                            title={''}
-                        />
+                                ]}
+                                columns={[
+                                    {title: localeMessages.nameLabel, field: 'name'},
+                                    {title: localeMessages.priceLabel, field: 'price'},
+                                    {title: localeMessages.descriptionLabel, field: 'description'}
+                                ]}
+                                data={R.propOr([], 'products', allProducts)}
+                                options={{
+                                    actionsColumnIndex: -1
+                                }}
+                                title={''}
+                            />
+                        </div>
                     </CardBody>
                 </Card>
             </GridItem>

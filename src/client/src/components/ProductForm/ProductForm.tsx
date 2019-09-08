@@ -52,7 +52,7 @@ function ProductForm({addProduct}) {
         validate={validate}
         //@ts-ignore
         render={({handleSubmit, form, submitting, pristine}) => (
-            <form onSubmit={handleSubmit}>
+            <form className="product-form" onSubmit={handleSubmit}>
                 <Paper style={{padding: 8}}>
                     <Grid container alignItems="flex-start" spacing={8}>
                         <Grid item xs={6}>

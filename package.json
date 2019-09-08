@@ -9,7 +9,7 @@
   "scripts": {
     "bootstrap": "lerna exec -- npm install",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run --headed"
   },
   "dependencies": {
     "@material-ui/core": "4.0.2",

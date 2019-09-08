@@ -1,6 +1,6 @@
 import {INestApplication} from '@nestjs/common';
 import {Test, TestingModule} from '@nestjs/testing';
-import * as request from 'supertest';
+import request from 'supertest';
 import {AppModule} from '../src/app.module';
 import {GET_ALL_PRODUCTS} from '../../client/src/queries/get-all-products';
 
