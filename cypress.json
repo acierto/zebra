@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://localhost:6517",
-  "defaultCommandTimeout": 5000,
+  "defaultCommandTimeout": 10000,
   "fixturesFolder": "src/client/test/e2e/cypress/fixtures",
   "integrationFolder": "src/client/test/e2e/cypress/specs",
   "pluginsFile": "src/client/test/e2e/cypress/plugins",

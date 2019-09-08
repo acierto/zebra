@@ -17,6 +17,6 @@ export class AllProductsDsl {
     }
 
     static checkThatNoProductsInStore() {
-        cy.get('.product-list tbody tr td').contains('No records to display');
+        cy.contains('.product-list tbody tr td', 'No records to display');
     }
 }
